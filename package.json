@@ -4,7 +4,7 @@
   "description": "",
   "main": "classes.js",
   "scripts": {
-    "test": "scripts"
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
