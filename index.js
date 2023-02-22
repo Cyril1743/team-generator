@@ -8,8 +8,7 @@ var fs = require("fs")
 var managers = []
 var engineers = []
 var interns = []
-var end = `</div>
-</div>
+var end = `
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
  </body>
  </html>`
@@ -66,7 +65,7 @@ function final(question) {
                 iQuestion(data, internQuestion)
             })
         } else if (data.choice === "Finish") {
-            fs.writeFile("index.html", writeData(), (err) => err ? console.log(err) : console.log("Added successfully"))
+            fs.writeFile("./dist/index.html", writeData(), (err) => err ? console.log(err) : console.log("Added successfully"))
             writeManagers(managers)
             writeEngineers(engineers)
             writeInterns(interns)
@@ -105,11 +104,11 @@ function writeManagers(array) {
                     <div class ='card-body'>
                         <h5 class = 'card-title'>${element.getName()}, ${element.getRole()}</h5>
                         <p class = 'card-text'> Id: ${element.getId()}</p>
-                        <p class = 'card-text'> <a href="mailto:${element.getEmail()}">${element.getEmail()}</a></p>
+                        <p class = 'card-text'> <a href="mailto:${element.getEmail()}">Email: ${element.getEmail()}</a></p>
                         <p class = 'card-text'>Office:${element.officeNumber}</p>
                     </div>
-                </div>`
-        fs.appendFile("index.html", content, (err) => err ? console.log(err) : console.log("Successfully added Managers"))
+                </div> \n`
+        fs.appendFile("./dist/index.html", content, (err) => err ? console.log(err) : console.log("Successfully added Managers"))
     });
 
 }
@@ -119,11 +118,11 @@ function writeEngineers(array) {
                     <div class ='card-body'>
                         <h5 class = 'card-title'>${element.getName()}, ${element.getRole()}</h5>
                         <p class = 'card-text'> Id: ${element.getId()}</p>
-                        <p class = 'card-text'> <a href="mailto:${element.getEmail()}">${element.getEmail()}</a></p>
-                        <p class = 'card-text'>GitHub:${element.getGithub()}</p>
+                        <p class = 'card-text'> <a href="mailto:${element.getEmail()}">Email: ${element.getEmail()}</a></p>
+                        <p class = 'card-text'><a href="https://github.com/${element.getGithub()}"> GitHub: ${element.getGithub()}</a></p>
                     </div>
-                </div>`
-        fs.appendFile("index.html", content, (err) => err ? console.log(err) : console.log("Successfully added Engineers"))
+                </div> \n`
+        fs.appendFile("./dist/index.html", content, (err) => err ? console.log(err) : console.log("Successfully added Engineers"))
     });
 }
 function writeInterns(array) {
@@ -132,11 +131,11 @@ function writeInterns(array) {
                     <div class ='card-body'>
                         <h5 class = 'card-title'>${element.getName()}, ${element.getRole()}</h5>
                         <p class = 'card-text'> Id: ${element.getId()}</p>
-                        <p class = 'card-text'> <a href="mailto:${element.getEmail()}">${element.getEmail()}</a></p>
+                        <p class = 'card-text'> <a href="mailto:${element.getEmail()}">Email: ${element.getEmail()}</a></p>
                         <p class = 'card-text'>School:${element.getSchool()}</p>
                     </div>
-                </div>`
-        fs.appendFile("index.html", content, (err) => err ? console.log(err) : console.log("Successfully added Interns"))
+                </div> \n`
+        fs.appendFile("./dist/index.html", content, (err) => err ? console.log(err) : console.log("Successfully added Interns"))
     });
-    fs.appendFile('index.html', end, (err) => err ? console.log(err) : console.log("Done!"))
+    fs.appendFile('./dist/index.html', end, (err) => err ? console.log(err) : console.log("Done!"))
 }
